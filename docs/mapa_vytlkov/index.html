@@ -5,34 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa výtlkov - Poprad-okolie</title>
     <meta name="author" content="Martin Chlebovec (martinius96@gmail.com)" />
-	<meta name="keywords" content="Poprad, výltky, jamy, Šuňava, Štrba, Lučivná, Svit, cesty, poistenie, náhrada, škoda, faktúra, správa ciest, stav, opravy">
+    <meta name="keywords" content="Poprad, výltky, jamy, Šuňava, Štrba, Lučivná, Svit, cesty, poistenie, náhrada, škoda, faktúra, správa ciest, stav, opravy">
     <meta name="robots" content="index, follow">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-	<script type="text/javascript">
-		window.smartlook||(function(d) {
-			var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
-			var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
-			c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
-		})(document);
-		smartlook('init', 'db50efe9fff280a17db52b82be221240cbbd3dbe');
-	</script>
+    <script type="text/javascript">
+        window.smartlook||(function(d) {
+            var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+            var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+            c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+        })(document);
+        smartlook('init', 'db50efe9fff280a17db52b82be221240cbbd3dbe');
+    </script>
     <script src="https://unpkg.com/leaflet"></script>
     <style>
         #map {
             height: 100vh;
             width: 100%;
-        }
-
-        .custom-marker {
-            width: 30px;
-            height: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
         }
     </style>
 </head>
@@ -43,7 +31,7 @@
 <script>
     // Sample marker data with status
     const markers = [
-	            { lat: 49.055729, lng: 20.290648, label: 'Diera', description: 'Smer od Poprad-Západ na malý kruhový objazd v ľavom pruhu pred prechodom, šírka diery na rozseknutie pneu', status: 'NotFixed' },
+            { lat: 49.055729, lng: 20.290648, label: 'Diera', description: 'Smer od Poprad-Západ na malý kruhový objazd v ľavom pruhu pred prechodom, šírka diery na rozseknutie pneu', status: 'NotFixed' },
         { lat: 49.055291, lng: 20.291979, label: 'Prepadnutý kanál', description: 'V ľavom pruhu v smere na malý kruhový objazd od veľkého kruhového objazdu, hĺbka diery asi 10 cm', status: 'NotFixed' },
         { lat: 49.055492, lng: 20.291437, label: 'Roxor z asfaltu', description: 'V ľavom pruhu pri vychádzaní smerom na veľký kruhový objazd. Tesne pred prechodom trčí roxor z asfaltu od Júna 2023', status: 'NotFixed' },
         { lat: 49.054082, lng: 20.294637, label: 'Široká diera', description: 'V pravom z dvojice priebežných pruhov je diera do polovice jazdného pruhu medzi smermi Kaufland/Fórum (opravovaná v Januári 2024, hĺbka jamy je menšia)', status: 'NotFixed' },     
@@ -74,32 +62,28 @@
     const markerGroup = L.featureGroup();
 
     markers.forEach(markerData => {
-        let markerColor, statusText;
+        let markerColor;
+
+        // Determine marker color based on status
         switch (markerData.status) {
             case 'Fixed':
                 markerColor = 'green';
-                statusText = 'Opravené';
                 break;
             case 'NotFixed':
                 markerColor = 'red';
-                statusText = 'Neopravené';
                 break;
             case 'InProgress':
                 markerColor = 'orange';
-                statusText = 'Opravuje sa';
                 break;
             default:
                 markerColor = 'gray';
-                statusText = 'Stav neznámy';
         }
 
-        const marker = L.marker([markerData.lat, markerData.lng], {
-            icon: L.divIcon({
-                className: 'custom-marker',
-                html: `<div style="background-color: ${markerColor};">${markerData.label}</div>`
-            })
-        });
-        marker.bindPopup(`<strong>${markerData.label}</strong><br>${markerData.description}<br>Status: <span style="color: ${markerColor};">${statusText}</span><br>GPS: ${markerData.lat}, ${markerData.lng}`);
+        const marker = L.marker([markerData.lat, markerData.lng], {icon: L.divIcon({
+            className: 'custom-marker',
+            html: `<div style="background-color: ${markerColor};">${markerData.label}</div>`
+        })});
+        marker.bindPopup(`<strong>${markerData.label}</strong><br>${markerData.description}<br>Status: ${markerData.status}<br>GPS: ${markerData.lat}, ${markerData.lng}`);
         markerGroup.addLayer(marker);
     });
 
