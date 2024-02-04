@@ -5,17 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa výtlkov - Poprad-okolie</title>
     <meta name="author" content="Martin Chlebovec (martinius96@gmail.com)" />
-    <meta name="keywords" content="Poprad, výltky, jamy, Šuňava, Štrba, Lučivná, Svit, cesty, poistenie, náhrada, škoda, faktúra, správa ciest, stav, opravy">
+	<meta name="keywords" content="Poprad, výltky, jamy, Šuňava, Štrba, Lučivná, Svit, cesty, poistenie, náhrada, škoda, faktúra">
     <meta name="robots" content="index, follow">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script type="text/javascript">
-        window.smartlook||(function(d) {
-            var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
-            var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
-            c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
-        })(document);
-        smartlook('init', 'db50efe9fff280a17db52b82be221240cbbd3dbe');
-    </script>
     <script src="https://unpkg.com/leaflet"></script>
     <style>
         #map {
@@ -29,28 +21,29 @@
 <div id="map"></div>
 
 <script>
-    // Sample marker data with status
+    // Sample marker data
     const markers = [
-            { lat: 49.055729, lng: 20.290648, label: 'Diera', description: 'Smer od Poprad-Západ na malý kruhový objazd v ľavom pruhu pred prechodom, šírka diery na rozseknutie pneu', status: 'NotFixed' },
-        { lat: 49.055291, lng: 20.291979, label: 'Prepadnutý kanál', description: 'V ľavom pruhu v smere na malý kruhový objazd od veľkého kruhového objazdu, hĺbka diery asi 10 cm', status: 'NotFixed' },
-        { lat: 49.055492, lng: 20.291437, label: 'Roxor z asfaltu', description: 'V ľavom pruhu pri vychádzaní smerom na veľký kruhový objazd. Tesne pred prechodom trčí roxor z asfaltu od Júna 2023', status: 'NotFixed' },
-        { lat: 49.054082, lng: 20.294637, label: 'Široká diera', description: 'V pravom z dvojice priebežných pruhov je diera do polovice jazdného pruhu medzi smermi Kaufland/Fórum (opravovaná v Januári 2024, hĺbka jamy je menšia)', status: 'NotFixed' },     
-        { lat: 49.058968, lng: 20.288562, label: 'Kanál, trhlina', description: 'Prepadnutý kanál, trhlina po celej dĺžke cesty', status: 'NotFixed' }, 
-        { lat: 49.052288, lng: 20.125816, label: 'Úsek dier', description: '700 metrový úsek dier, pri vyhnutí sa jednej trafíte ďalšie tri. Dobré na rozsekanie pneu', status: 'NotFixed' }, 
-        { lat: 49.051839, lng: 20.101531, label: 'Ostrá jama', description: 'V pravom pruhu v smere na Štrbu. V mieste nadpájania asfaltových kobercov je jama s ostrou hranou', status: 'NotFixed' }, 
-        { lat: 49.032610, lng: 20.103387, label: 'Úsek dier', description: 'Diery v 300 metrovom úseku za dedinou Šuňava', status: 'NotFixed' }, 
-        { lat: 49.032109, lng: 20.076278, label: 'Prepadnutý kanál', description: 'Prepanutý kanál v pravom pruhu pri vjazde do obce', status: 'NotFixed' }, 
-        { lat: 49.030899, lng: 20.082816, label: 'Zvlnený asfalt', description: 'Zvlnený asfaltový koberec, po menej ako roku pokládky', status: 'NotFixed' }, 
-{ lat: 49.052118, lng: 20.140476, label: 'Prepadnuté kanály', description: 'Prepadnuté kanalizačné poklopy v dĺžke 300 metrov s ich umiestnením presne na pravé koleso vozidla v smere z obce Lučivná', status: 'NotFixed' }, 
-{ lat: 49.053078, lng:  20.150067, label: 'Prepadnutý asfalt', description: 'Prepadnutý asfalt do jamy pod kopcom v smere od Svitu v obci Lučivná', status: 'NotFixed' }, 
-{ lat: 49.053594, lng:  20.153219, label: 'Úsek dier', description: 'Úsek dier až pod kopec pri vjazde a výjazde z obce Lučivná (smer Svit)', status: 'NotFixed' }, 
-{ lat: 49.058913, lng:  20.187617, label: 'Diery na moste', description: 'Úsek dier v meste Svit po moste', status: 'NotFixed' }, 
-{ lat: 49.058149, lng:  20.179450, label: 'Diery na ceste', description: 'Úsek dier v meste Svit pred Kvety Tatry najmä v smere na Lučivnú', status: 'NotFixed' }, 
-{ lat: 49.057472, lng:  20.171674, label: 'Prepadnuté panely', description: 'Pri výjazde z mesta Svit je prepadnutá cesta každých 5 metrov (asi panely?), seká do pneu', status: 'NotFixed' }, 
-{ lat: 49.039776, lng:  20.076404, label: 'Tankodrom', description: 'Jamy na ceste v zákrute', status: 'NotFixed' },
-{ lat: 49.056427, lng:  20.287057, label: 'Prepadnutý kanál', description: 'V pravom pruhu v smere na Poprad-Západ, kanál na prechode pre chodcov', status: 'NotFixed' },
-{ lat: 49.058446, lng:  20.308365, label: 'Vyrezaný asfalt, jama', description: 'Vyrezaný asfalt (podľa Google Maps minimálne od Apríla 2023) okolo kanála. Hneď za výjazdom z podjazdu smer Poprad-Matejovce', status: 'NotFixed' },
-{ lat: 49.052818, lng:  20.279520, label: 'Jama', description: 'Premávka zvedená do jedného pruhu riadená semaforom. V zúžení je jama vhodná na preseknutie pneumatiky', status: 'NotFixed' },
+        { lat: 49.055729, lng: 20.290648, label: 'Diera', description: 'Smer od Poprad-Západ na malý kruhový objazd v ľavom pruhu pred prechodom, šírka diery na rozseknutie pneu' },
+        { lat: 49.055291, lng: 20.291979, label: 'Prepadnutý kanál', description: 'V ľavom pruhu v smere na malý kruhový objazd od veľkého kruhového objazdu, hĺbka diery asi 10 cm' },
+        { lat: 49.055492, lng: 20.291437, label: 'Roxor z asfaltu', description: 'V ľavom pruhu pri vychádzaní smerom na veľký kruhový objazd. Tesne pred prechodom trčí roxor z asfaltu od Júna 2023' },
+        { lat: 49.054082, lng: 20.294637, label: 'Široká diera', description: 'V pravom z dvojice priebežných pruhov je diera do polovice jazdného pruhu medzi smermi Kaufland/Fórum (opravovaná v Januári 2024, hĺbka jamy je menšia)' },     
+        { lat: 49.058968, lng: 20.288562, label: 'Kanál, trhlina', description: 'Prepadnutý kanál, trhlina po celej dĺžke cesty' }, 
+        { lat: 49.052288, lng: 20.125816, label: 'Úsek dier', description: '700 metrový úsek dier, pri vyhnutí sa jednej trafíte ďalšie tri. Dobré na rozsekanie pneu' }, 
+        { lat: 49.051839, lng: 20.101531, label: 'Ostrá jama', description: 'V pravom pruhu v smere na Štrbu. V mieste nadpájania asfaltových kobercov je jama s ostrou hranou' }, 
+        { lat: 49.032610, lng: 20.103387, label: 'Úsek dier', description: 'Diery v 300 metrovom úseku za dedinou Šuňava' }, 
+        { lat: 49.032109, lng: 20.076278, label: 'Prepadnutý kanál', description: 'Prepanutý kanál v pravom pruhu pri vjazde do obce' }, 
+        { lat: 49.030899, lng: 20.082816, label: 'Zvlnený asfalt', description: 'Zvlnený asfaltový koberec, po menej ako roku pokládky' }, 
+{ lat: 49.052118, lng: 20.140476, label: 'Prepadnuté kanály', description: 'Prepadnuté kanalizačné poklopy v dĺžke 300 metrov s ich umiestnením presne na pravé koleso vozidla v smere z obce Lučivná' }, 
+{ lat: 49.053078, lng:  20.150067, label: 'Prepadnutý asfalt', description: 'Prepadnutý asfalt do jamy pod kopcom v smere od Svitu v obci Lučivná' }, 
+{ lat: 49.053594, lng:  20.153219, label: 'Úsek dier', description: 'Úsek dier až pod kopec pri vjazde a výjazde z obce Lučivná (smer Svit)' }, 
+{ lat: 49.058913, lng:  20.187617, label: 'Diery na moste', description: 'Úsek dier v meste Svit po moste' }, 
+{ lat: 49.058149, lng:  20.179450, label: 'Diery na ceste', description: 'Úsek dier v meste Svit pred Kvety Tatry najmä v smere na Lučivnú' }, 
+{ lat: 49.057472, lng:  20.171674, label: 'Prepadnuté panely', description: 'Pri výjazde z mesta Svit je prepadnutá cesta každých 5 metrov (asi panely?), seká do pneu' }, 
+{ lat: 49.039776, lng:  20.076404, label: 'Tankodrom', description: 'Jamy na ceste v zákrute' },
+{ lat: 49.056427, lng:  20.287057, label: 'Prepadnutý kanál', description: 'V pravom pruhu v smere na Poprad-Západ, kanál na prechode pre chodcov' },
+{ lat: 49.058446, lng:  20.308365, label: 'Vyrezaný asfalt, jama', description: 'Vyrezaný asfalt (podľa Google Maps minimálne od Apríla 2023) okolo kanála. Hneď za výjazdom z podjazdu smer Poprad-Matejovce' },
+{ lat: 49.052818, lng:  20.279520, label: 'Jama', description: 'Premávka zvedená do jedného pruhu riadená semaforom. V zúžení je jama vhodná na preseknutie pneumatiky' },
+        // Add more markers as needed
     ];
 
     const map = L.map('map').setView([0, 0], 2);
@@ -62,28 +55,8 @@
     const markerGroup = L.featureGroup();
 
     markers.forEach(markerData => {
-        let markerColor;
-
-        // Determine marker color based on status
-        switch (markerData.status) {
-            case 'Fixed':
-                markerColor = 'green';
-                break;
-            case 'NotFixed':
-                markerColor = 'red';
-                break;
-            case 'InProgress':
-                markerColor = 'orange';
-                break;
-            default:
-                markerColor = 'gray';
-        }
-
-        const marker = L.marker([markerData.lat, markerData.lng], {icon: L.divIcon({
-            className: 'custom-marker',
-            html: `<div style="background-color: ${markerColor};">${markerData.label}</div>`
-        })});
-        marker.bindPopup(`<strong>${markerData.label}</strong><br>${markerData.description}<br>Stav: ${markerData.status}<br>GPS: ${markerData.lat}, ${markerData.lng}`);
+        const marker = L.marker([markerData.lat, markerData.lng]);
+        marker.bindPopup(`<strong>${markerData.label}</strong><br>${markerData.description}<br>GPS: ${markerData.lat}, ${markerData.lng}`);
         markerGroup.addLayer(marker);
     });
 
