@@ -83,7 +83,7 @@
             className: 'custom-marker',
             html: `<div style="background-color: ${markerColor};">${markerData.label}</div>`
         })});
-        marker.bindPopup(`<strong>${markerData.label}</strong><br>${markerData.description}<br>Status: ${markerData.status}<br>GPS: ${markerData.lat}, ${markerData.lng}`);
+        marker.bindPopup(`<strong>${markerData.label}</strong><br>${markerData.description}<br>Stav: ${markerData.status}<br>GPS: ${markerData.lat}, ${markerData.lng}`);
         markerGroup.addLayer(marker);
     });
 
