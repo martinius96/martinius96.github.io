@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenStreetMap Example</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet"></script>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+    // Sample marker data
+    const markers = [
+        { lat: 49.055729, lng: 20.290648, label: 'Diera', description: 'Smer od Poprad-Západ na malý kruhový objazd v ľavom pruhu pred prechodom' },
+        { lat: 49.055291, lng: 20.291979, label: 'Prepadnutý kanál', description: 'V ľavom pruhu v smere na malý kruhový objazd od veľkého kruhového objazdu' },
+{ lat: 49.055492, lng: 20.291437, label: 'Roxor z asfaltu', description: 'V ľavom pruhu pri vychádzaní smerom na veľký kruhový objazd. Tesne pred prechodom trčí roxor z asfaltu' },
+        // Add more markers as needed
+    ];
+
+    const map = L.map('map').setView([0, 0], 2);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    const markerGroup = L.featureGroup();
+
+    markers.forEach(markerData => {
+        const marker = L.marker([markerData.lat, markerData.lng]);
+        marker.bindPopup(`<strong>${markerData.label}</strong><br>${markerData.description}<br>GPS: ${markerData.lat}, ${markerData.lng}`);
+        markerGroup.addLayer(marker);
+    });
+
+    map.addLayer(markerGroup);
+    map.fitBounds(markerGroup.getBounds());
+</script>
+
+</body>
+</html>
