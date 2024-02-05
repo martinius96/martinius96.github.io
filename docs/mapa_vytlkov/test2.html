@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa výtlkov - Poprad-okolie</title>
+    <meta name="author" content="Martin Chlebovec (martinius96@gmail.com)" />
+    <meta name="keywords" content="Poprad, výltky, jamy, Šuňava, Štrba, Lučivná, Svit, cesty, poistenie, náhrada, škoda, faktúra, slovenská správa ciest, prešovský kraj">
+    <link rel="icon" type="image/png" href="https://martinius96.github.io/termostat-ethernet/favicon.png">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet"></script>
+    <script type="text/javascript">
+        window.smartlook||(function(d) {
+            var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+            var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+            c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+        })(document);
+        smartlook('init', 'db50efe9fff280a17db52b82be221240cbbd3dbe');
+    </script>
+    <style>
+        #map {
+            height: 80vh;
+            width: 100%;
+        }
+
+        #addMarkerButton {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+<button id="addMarkerButton" onclick="addMarker()">+</button>
+
+<script>
+    const markers = [
+        // Existing marker data...
+    ];
+
+    const map = L.map('map').setView([0, 0], 2);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    const markerGroup = L.featureGroup();
+
+    markers.forEach(markerData => {
+        const marker = L.marker([markerData.lat, markerData.lng]);
+        marker.bindPopup(`<strong>${markerData.label}</strong><br>${markerData.description}<br>GPS: ${markerData.lat}, ${markerData.lng}`);
+        markerGroup.addLayer(marker);
+    });
+
+    map.addLayer(markerGroup);
+    map.fitBounds(markerGroup.getBounds());
+
+    function addMarker() {
+        // Add your logic to prompt user for new marker information
+        const newMarkerData = {
+            lat: /* user input */,
+            lng: /* user input */,
+            label: /* user input */,
+            description: /* user input */,
+            status: 'NotFixed',
+        };
+
+        const newMarker = L.marker([newMarkerData.lat, newMarkerData.lng]);
+        newMarker.bindPopup(`<strong>${newMarkerData.label}</strong><br>${newMarkerData.description}<br>GPS: ${newMarkerData.lat}, ${newMarkerData.lng}`);
+        markerGroup.addLayer(newMarker);
+
+        // You may want to update your backend or store the new marker data
+
+        map.fitBounds(markerGroup.getBounds());
+    }
+</script>
+
+</body>
+</html>
