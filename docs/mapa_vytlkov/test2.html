@@ -51,29 +51,24 @@
         { lat: 49.055729, lng: 20.290648, label: 'Diera', description: 'Smer od Poprad-Západ na malý kruhový objazd v ľavom pruhu pred prechodom, šírka a hĺbka diery na rozseknutie pneu', status: 'NotFixed', color: 'blue' },
     ];
 
-    const map = L.map('map').setView([0, 0], 2);
+    const map = L.map('map').setView([49.055729, 20.290648], 12);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    const markerGroup = L.featureGroup();
-
     markers.forEach(markerData => {
         const marker = L.marker([markerData.lat, markerData.lng], {icon: createMarkerIcon(markerData.color)});
         marker.bindPopup(`<strong>${markerData.label}</strong><br>${markerData.description}<br>GPS: ${markerData.lat}, ${markerData.lng}`);
-        markerGroup.addLayer(marker);
+        marker.addTo(map);
     });
 
-    map.addLayer(markerGroup);
-    map.fitBounds(markerGroup.getBounds());
-
     function createMarkerIcon(color) {
-        return L.divIcon({
-            className: 'custom-div-icon',
-            html: `<div style="background-color:${color};" class="marker-pin"></div><i class="fas fa-map-marker-alt"></i>`,
-            iconSize: [30, 42],
-            iconAnchor: [15, 42]
+        return L.icon({
+            iconUrl: `https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-${color}.png`,
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34]
         });
     }
 </script>
@@ -92,16 +87,15 @@
             <li>Mestá</li>
             <li>Slovenská správa ciest - SSC, poverené organizácie</li>
             <li>Národná diaľničná spoločnosť</li>
-            <li><a href="https://www.cdb.sk/sk/metadata/referencna-siet/referencna-siet-1-urovne/usek/spravca-a-vlastnik.alej">Aby ste vedeli, u koho si vymáhať preplatenie poškodenia diskov a pneumatík</a></li>
-<li>"Vlastníci a správcovia pozemných komunikácií sú povinní pozemné komunikácie udržiavať v stave zodpovedajúcom účelu, na ktorý sú určené." - SSC. Správcovia cesty majú poistenie zodpovednosti za škodu, ktoré umožňuje plnenie.</li>
-</div>
-<div class="col col-colored">
-<h4>Ako to chodí s preplatením škody?</h4>
-<li>Poplatky vyberať, odškodniť nie</li>
-<li><a href="https://www.facebook.com/obcanzadverami.rtvs/videos/225653780262200"><font color="white">2x pneu, 2x disk off</font></a></li>
-<li><a href="https://tvnoviny.sk/domace/clanok/874462-autom-vletel-do-diery-na-ktorej-chybal-kanalizacny-poklop-zufaly-muz-sa-uz-mesiace-domaha-preplatenia-skody"><font color="white">Kanál bez poklopu, 2x pneu, 2x disk off</font></a></li>
-</div>
-</div>
-
+            <li><a href="https://www.cdb.sk/sk/metadata/referencna-siet/referencna-siet-1-urovne/usek/spravca-a-vlastnik.alej">Aby ste vedeli, u koho si vymáhať preplatenie poškodenia diskov a pneumatí</a></li>
+        </div>
+        <div class="col col-colored">
+            <h4>Ako to chodí s preplatením škody?</h4>
+            <li>Poplatky vyberať, odškodniť nie</li>    
+            <li><a href="https://www.facebook.com/obcanzadverami.rtvs/videos/225653780262200"><font color="white">2x pneu, 2x disk off</font></a></li>
+            <li><a href="https://tvnoviny.sk/domace/clanok/874462-autom-vletel-do-diery-na-ktorej-chybal-kanalizacny-poklop-zufaly-muz-sa-uz-mesiace-domaha-preplatenia-skody"><font color="white">Kanál bez poklopu, 2x pneu, 2x disk off</font></a></li>
+        </div>
+    </div>
 </div>
 </body>
+</html>
