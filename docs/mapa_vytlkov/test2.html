@@ -69,12 +69,11 @@
     map.fitBounds(markerGroup.getBounds());
 
     function createMarkerIcon(color) {
-        return new L.Icon({
-            iconUrl: `http://leafletjs.com/examples/custom-icons/leaf-${color}.png`,
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [1, -34],
-            shadowSize: [41, 41]
+        return L.divIcon({
+            className: 'custom-div-icon',
+            html: `<div style="background-color:${color};" class="marker-pin"></div><i class="fas fa-map-marker-alt"></i>`,
+            iconSize: [30, 42],
+            iconAnchor: [15, 42]
         });
     }
 </script>
@@ -93,8 +92,7 @@
             <li>Mestá</li>
             <li>Slovenská správa ciest - SSC, poverené organizácie</li>
             <li>Národná diaľničná spoločnosť</li>
-            <li><a href="https://www.cdb.sk/sk/metadata/referencna-siet/referencna-siet-1-urovne/usek/spravca-a-vlastnik.alej">Aby ste vedeli, u koho si vymáhať preplatenie poškodenia diskov a pneumatí
-k</a></li>
+            <li><a href="https://www.cdb.sk/sk/metadata/referencna-siet/referencna-siet-1-urovne/usek/spravca-a-vlastnik.alej">Aby ste vedeli, u koho si vymáhať preplatenie poškodenia diskov a pneumatík</a></li>
 <li>"Vlastníci a správcovia pozemných komunikácií sú povinní pozemné komunikácie udržiavať v stave zodpovedajúcom účelu, na ktorý sú určené." - SSC. Správcovia cesty majú poistenie zodpovednosti za škodu, ktoré umožňuje plnenie.</li>
 </div>
 <div class="col col-colored">
@@ -107,4 +105,3 @@ k</a></li>
 
 </div>
 </body>
-</html>
