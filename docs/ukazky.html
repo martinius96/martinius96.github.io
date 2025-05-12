@@ -8,56 +8,62 @@
         body {
             font-family: sans-serif;
             margin: 20px;
-            background-color: #f4f4f4;
+            background-color: #f8f8f8;
+            line-height: 1.6;
         }
 
         .container {
             display: flex;
-            gap: 20px;
-            max-width: 960px;
-            margin: 0 auto;
+            gap: 25px;
+            max-width: 1000px;
+            margin: 20px auto;
         }
 
         .column {
             flex: 1;
             background-color: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
         }
 
         .column h2 {
-            color: #333;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
+            color: #444;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .column ul {
-            list-style: none;
-            padding: 0;
+            list-style-type: disc; /* Zmena na štandardné odrážky */
+            padding-left: 20px; /* Pridanie odsadenia pre odrážky */
         }
 
         .column li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .column li a {
-            color: #007bff;
+            color: #0080c7;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .column li a:hover {
-            color: #0056b3;
+            color: #005e9b;
+        }
+
+        center h2 {
+            color: #333;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-            <center><h2>Ukážky realizovaných projektov</h2></center>
+    <center><h2>Ukážky realizovaných projektov</h2></center>
     <div class="container">
         <div class="column">
-            <h2>Hardvér, firmvér</h2>
+            <center><h2>Hardvér, firmvér</h2></center>
             <ul>
                 <li><a href="https://your-iot.github.io/DOMINATOR/">RFID DOMINATOR - stopky pre Airsoft / Paintball</a></li>
                 <li><a href="https://deadawp.blog.sector.sk/blogclanok/13471/internetove-radia-esp32-max98357-i2s.htm">Webrádio (.mp3 .ogg .aac)</a></li>
@@ -68,25 +74,25 @@
                 <li><a href="https://deadawp.blog.sector.sk/blogclanok/13490/monitorovanie-napatia-baterie-s-lora-esp32.htm">LoRa merač napätia trakčnej batérie</a></li>
                 <li><a href="https://github.com/martinius96/WebScraper-ESP">Webscraper - overenie ŠPZ v pátraní</a></li>
                 <li><a href="https://deadawp.blog.sector.sk/blogclanok/13225/hack-rs232-arduino-uart.htm">Emulátor RS232 pre kozmetický prístroj</a></li>
-<li><a href="https://deadawp.blog.sector.sk/blogclanok/13214/digitalny-metronom-arduino.htm">Digitálny metronóm</a></li>
+                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13214/digitalny-metronom-arduino.htm">Digitálny metronóm</a></li>
             </ul>
         </div>
         <div class="column">
-            <h2>Webové aplikácie</h2>
+            <center><h2>Webové aplikácie</h2></center>
             <ul>
                 <li><a href="https://your-iot.github.io/Watmonitor/">Watmonitor - hladinomer</a></li>
                 <li><a href="https://deadawp.blog.sector.sk/blogclanok/13096/autonomne-vykurovanie-cez-internet-s-esp8266.htm">Vykurovanie, meranie teplôt</a></li>
-<li><a href="https://your-iot.github.io/voice-ESP32/">Hlasové ovládanie s Firebase Realtime DB</a></li>
-<li><a href="https://srazky.mediadrive.eu/">Monitorovanie hladiny a zrážok - Kamencové jazero (ČR)</a></li>
-<li><a href="https://deadawp.blog.sector.sk/blogclanok/13062/riadenie-zavlahy-cez-internet-s-arduinom.htm">Riadenie závlahy s časovačom pre 4 okruhy</a></li>
-<li><a href="https://deadawp.blog.sector.sk/blogclanok/13099/rfid-vratnik-so-spravou-on-line.htm">RFID vrátnik</a></li>
-<li><a href="https://deadawp.blog.sector.sk/blogclanok/13230/meteostanica-v2-projekt-zdarma-pod-mit-licenciou.htm">Meteostanica</a></li>
-<li><a href="https://deadawp.blog.sector.sk/blogclanok/13194/vykurovanie-cez-internet-multiuser-webaplikacia-otvoreny-hardver.htm">Vykurovanie - Multiuser webapp</a></li>
+                <li><a href="https://your-iot.github.io/voice-ESP32/">Hlasové ovládanie s Firebase Realtime DB</a></li>
+                <li><a href="https://srazky.mediadrive.eu/">Monitorovanie hladiny a zrážok - Kamencové jazero (ČR)</a></li>
+                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13062/riadenie-zavlahy-cez-internet-s-arduinom.htm">Riadenie závlahy s časovačom pre 4 okruhy</a></li>
+                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13099/rfid-vratnik-so-spravou-on-line.htm">RFID vrátnik</a></li>
+                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13230/meteostanica-v2-projekt-zdarma-pod-mit-licenciou.htm">Meteostanica</a></li>
+                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13194/vykurovanie-cez-internet-multiuser-webaplikacia-otvoreny-hardver.htm">Vykurovanie - Multiuser webapp</a></li>
 
             </ul>
         </div>
         <div class="column">
-            <h2>Iné</h2>
+            <center><h2>Iné</h2></center>
             <ul>
                 <li><a href="https://martinius96.github.io/martinius96/pdf/Chlebovec_Martin_Bakalarska_praca.pdf">Inteligentné relé s WiFi konektivitou do siete eduroam - (<b>Bakalárska práca</b>)</a></li>
                 <li><a href="https://martinius96.github.io/martinius96/pdf/Chebovec_Martin_Diplomova_praca.pdf">Bezpečná aktualizácia firmvéru v senzorovej sieti na báze ESP32 - (<b>Diplomová práca</b>)</a></li>
@@ -96,8 +102,8 @@
                 <li><a href="https://martinius96.github.io/martinius96/pdf/HASH_Chlebovec.pdf">Hash reťazcov, porovnanie - <b>MATLAB</b></a></li>
                 <li><a href="https://deadawp.blog.sector.sk/blogclanok/13283/kruznicova-trilateracia-matlab.htm">Kružnicová trilaterácia, určenie polohy - <b>MATLAB</b></a></li>
                 <li><a href="https://deadawp.blog.sector.sk/blogclanok/13309/beamforming-vizualizacia-matlab.htm">Beamforming - <b>MATLAB</b></a></li>
-<li><a href="https://deadawp.blog.sector.sk/blogclanok/13178/vzorkovanie-signalu-matlab.htm">Vzorkovanie signálu - <b>MATLAB</b></a></li>
-<li><a href="https://deadawp.blog.sector.sk/blogclanok/13483/nfc-karta-s-wifi-konfiguraciou.htm">NFC karta s WiFi konfiguráciou</a></li>
+                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13178/vzorkovanie-signalu-matlab.htm">Vzorkovanie signálu - <b>MATLAB</b></a></li>
+                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13483/nfc-karta-s-wifi-konfiguraciou.htm">NFC karta s WiFi konfiguráciou</a></li>
             </ul>
         </div>
     </div>
