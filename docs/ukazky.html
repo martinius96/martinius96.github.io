@@ -4,174 +4,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ukážky realizovaných projektov</title>
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-<style>
-        body {
-            font-family: sans-serif;
-            margin: 20px;
-            background-color: #f8f8f8;
-            line-height: 1.6;
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f4f7f9; color: #333; }
+        .card { 
+            transition: transform 0.2s ease, box-shadow 0.2s ease; 
+            height: 100%; border: none; border-radius: 12px; 
         }
-
-        .container {
-            display: flex;
-            flex-wrap: wrap; /* Added flex-wrap to allow columns to wrap */
-            gap: 25px;
-            max-width: 1000px;
-            margin: 20px auto;
-        }
-
-        .column {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-            flex: 1 1 100%; /* Columns take full width by default */
-            min-width: 250px; /* Prevents columns from getting too narrow */
-        }
-
-        /* Media query for screens wider than 768px (typical tablet size) */
-        @media (min-width: 768px) {
-            .column {
-                flex: 1; /* Columns share equal space on larger screens */
-            }
-        }
-
-        .column h2 {
-            color: #444;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 12px;
-            margin-bottom: 15px;
-        }
-
-        .column ul {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
-
-        .column li {
-            margin-bottom: 10px;
-        }
-
-        .column li a {
-            color: #0080c7;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .column li a:hover {
-            color: #005e9b;
-        }
-
-        center h2 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-.qr-frame {
-  border: 2px solid #333;
-  padding: 10px;
-  margin-top: 10px;
-}
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; }
+        .project-list { list-style: none; padding-left: 0; }
+        .project-list li { margin-bottom: 0.6rem; padding-left: 1.2rem; position: relative; }
+        .project-list li::before { content: "•"; color: #0d6efd; font-weight: bold; position: absolute; left: 0; }
+        .project-list a { text-decoration: none; color: #444; transition: color 0.2s; }
+        .project-list a:hover { color: #0d6efd; }
+        .qr-section { background: #f8f9fa; border-radius: 8px; border: 1px dashed #ccc; }
     </style>
 </head>
 <body>
-    <center><h2>Ukážky vybraných projektov, prác</h2></center>
-    <div class="container">
-        <div class="column">
-            <center><h2>Hardvér / firmvér</h2></center>
-            <ul>
-                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13490/monitorovanie-napatia-12v-baterie.htm"><b>Solárny LoRa merač napätia 12V batérie el. oplotku</b></a></li>
-                <li><a href="https://github.com/martinius96/hladinomer-studna-scripty/tree/master/examples/Hladinomer"><b>Senzorový uzol - hladinomer (ESP-IDF FreeRTOS / Arduino Core open-source)</b></a></li>
-                <li><a href="https://martinius96.github.io/WiFi-termostat/">WiFi termostat - ESP32 / ESP8266 (freeware)</a></li>
-                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13400/preco-by-som-si-uz-nekupil-espd-35-20-21-od-laskakitu.htm"><b>Analýza a obídenie tlačidlového spúšťania ESPD-35</b></a></li> 
-                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13445/tester-vstrekovacov-s-irf520.htm"><b>Tester vstrekovačov - Opel / Chevrolet s IRF520</b></a></li>
-                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13243/web-scraper-ii-arduino-esp8266-esp32.htm">Webscraper - overenie ŠPZ v pátraní</a></li>
-                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13530/gatt-server-s-esp32-c6.htm"><b>BLE GATT server - ESP32-C6 + Web Bluetooth API</b></a></li>    
-                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13258/digitalny-potenciometer-prerusenie-debouncing.htm">Odporový rýchlomer pre vyšší systém - Železnica 600 Vracov</a></li>
-                <!--- <li><a href="https://deadawp.blog.sector.sk/blogclanok/13214/digitalny-metronom-arduino.htm">Digitálny metronóm</a></li> 
-               
-                
---->
-            <li><a href="https://deadawp.blog.sector.sk/blogclanok/13233/casova-kontrola-vodarne-stavovy-automat-arduino.htm">Stavový automat - kontrola vodárne</a></li>
-<li><a href="https://your-iot.github.io/DOMINATOR/sk/"><b>DOMINATOR - stopky pre Airsoft / Paintball (open-source)</b></a></li>
 
-                
-            </ul>
-        </div>
-        <div class="column">
-            <center><h2>Webové aplikácie</h2></center>
-            <ul>
-                <li><a href="https://your-iot.github.io/Watmonitor/sk/"><b>Watmonitor - hladina / výška materiálu</b></a></li>
-                <li><a href="https://github.com/martinius96/Watmonitor-LiTe/"><b>Watmonitor LiTe s Firebase databázou (open-source)</b></a></li>
-                <li><a href="https://github.com/martinius96/Vykurovanie-Multiuser-Webapp-Arduino-ESP8266-ESP32">Vykurovanie Multiuser (open-source)</a></li>
-              <!---   <li><a href="https://your-iot.github.io/voice-ESP32/"><b>Hlasové ovládanie s Firebase Realtime DB</b></a></li> --->
-                <li><a href="https://srazky.mediadrive.eu/">Monitorovanie hladiny a zrážok - Kamencové jazero (od 2020)</a></li>
-                <li><a href="https://your-iot.github.io/Batmonitor/sk/"><b>Batmonitor - vizualizácia napätia 12V batérie + LoRa tech. dát</b></a></li>               
-            <!---    <li><a href="https://deadawp.blog.sector.sk/blogclanok/13062/riadenie-zavlahy-cez-internet-s-arduinom.htm">Riadenie závlahy s časovačom pre 4 okruhy</a></li>--->
-                <li><a href="https://github.com/martinius96/Meteostanica-Arduino-ESP">Meteostanica (open-source)</a></li>
-               <!--- <li><a href="https://github.com/martinius96/Webwars">Webwars - text based multiplayer hra</a></li>--->
+<div class="container py-5">
+    <header class="text-center mb-5">
+        <h1 class="display-5 fw-bold">Ukážky projektov a prác</h1>
+        <p class="text-muted">Hrubo zvýraznené najnovšie projekty</p>
+    </header>
+
+    <div class="row g-4">
+        
+        <!-- 1. Hardvér / firmvér -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm p-4">
+                <h3 class="h5 border-bottom pb-2 mb-3 text-primary">Hardvér / firmvér</h3>
+                <ul class="project-list">
+                    <li><a href="https://deadawp.blog.sector.sk/blogclanok/13490/monitorovanie-napatia-12v-baterie.htm"><b>Solárny LoRa merač napätia 12V batérie</b></a></li>
+                    <li><a href="https://github.com/martinius96/hladinomer-studna-scripty/tree/master/examples/Hladinomer"><b>Senzorový uzol - hladinomer (ESP-IDF / Arduino)</b></a></li>
+                    <li><a href="https://martinius96.github.io/WiFi-termostat/">WiFi termostat - ESP32 / ESP8266</a></li>
+                    <li><a href="https://deadawp.blog.sector.sk/blogclanok/13400/preco-by-som-si-uz-nekupil-espd-35-20-21-od-laskakitu.htm"><b>Analýza a obídenie spúšťania ESPD-35</b></a></li> 
+                    <li><a href="https://deadawp.blog.sector.sk/blogclanok/13445/tester-vstrekovacov-s-irf520.htm"><b>Tester vstrekovačov - Opel / Chevrolet</b></a></li>
+                    <li><a href="https://deadawp.blog.sector.sk/blogclanok/13243/web-scraper-ii-arduino-esp8266-esp32.htm">Webscraper - overenie ŠPZ</a></li>
+                    <li><a href="https://deadawp.blog.sector.sk/blogclanok/13530/gatt-server-s-esp32-c6.htm"><b>BLE GATT server - ESP32-C6</b></a></li>
+                    <li><a href="https://deadawp.blog.sector.sk/blogclanok/13258/digitalny-potenciometer-prerusenie-debouncing.htm">Odporový rýchlomer - Železnica 600 Vracov</a></li>
+                    <li><a href="https://deadawp.blog.sector.sk/blogclanok/13233/casova-kontrola-vodarne-stavovy-automat-arduino.htm">Stavový automat - kontrola vodárne</a></li>
+                    <li><a href="https://your-iot.github.io/DOMINATOR/sk/"><b>DOMINATOR - stopky pre Airsoft / Paintball</b></a></li>
                 </ul>
-<div class="qr-frame">
-  <ul class="mb-2">
-    <li>
-      <a href="https://hladinomer.eu/QR/"><b>QR statická vizualizácia</b></a>
-    </li>
-    <li>
-      <a href="https://hladinomer.eu/AR/"><b>AR orbitálna vizualizácia</b></a>
-    </li>
-  </ul>
+            </div>
+        </div>
 
-  <center>
-    <h6>Naskenujte tento QR kód z AR / QR vizualizácie</h6>
-    <img src="https://i.imgur.com/26qSq0y.png" width="128">
-  </center>
-</div>
-            <li><a href="https://hladinomer.eu/NFC/">AR orbitálna vizualizácia - NFC UID / NDEF trigerred</a></li>
+        <!-- 2. Webové aplikácie -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm p-4">
+                <h3 class="h5 border-bottom pb-2 mb-3 text-primary">Webové aplikácie</h3>
+                <ul class="project-list">
+                    <li><a href="https://your-iot.github.io/Watmonitor/sk/"><b>Watmonitor - hladina / výška materiálu</b></a></li>
+                    <li><a href="https://github.com/martinius96/Watmonitor-LiTe/"><b>Watmonitor LiTe (Firebase + open-source)</b></a></li>
+                    <li><a href="https://github.com/martinius96/Vykurovanie-Multiuser-Webapp-Arduino-ESP8266-ESP32">Vykurovanie Multiuser (open-source)</a></li>
+                    <li><a href="https://your-iot.github.io/voice-ESP32/"><b>Hlasové ovládanie s Firebase Realtime DB</b></a></li>
+                    <li><a href="https://srazky.mediadrive.eu/">Monitorovanie hladiny a zrážok (od 2020)</a></li>
+                    <li><a href="https://your-iot.github.io/Batmonitor/sk/"><b>Batmonitor - vizualizácia napätia batérie</b></a></li>
+                    <li><a href="https://deadawp.blog.sector.sk/blogclanok/13062/riadenie-zavlahy-cez-internet-s-arduinom.htm">Riadenie závlahy s časovačom (4 okruhy)</a></li>
+                    <li><a href="https://github.com/martinius96/Meteostanica-Arduino-ESP">Meteostanica (open-source)</a></li>
+                    <li><a href="https://github.com/martinius96/Webwars">Webwars - text based MP hra (open-source)</a></li>
+                </ul>
+                <div class="qr-section p-3 mt-3 text-center">
+                    <div class="row g-2 mb-2">
+                        <div class="col-6"><a href="https://hladinomer.eu/QR/" class="btn btn-sm btn-outline-primary w-100">QR statická</a></div>
+                        <div class="col-6"><a href="https://hladinomer.eu/AR/" class="btn btn-sm btn-outline-primary w-100">AR orbitálna</a></div>
+                    </div>
+                    <h6>Naskenujte QR pre AR</h6>
+                    <img src="https://i.imgur.com/26qSq0y.png" width="100" alt="QR">
+                </div>
+            </div>
         </div>
-        <div class="column">
-            <center><h2>Zadania, práce - TUKE</h2></center>
-            <ul>
-<li><a href="https://martinius96.github.io/martinius96/pdf/Chlebovec_Martin_Bakalarska_praca.pdf">Inteligentné relé s WiFi konektivitou do siete eduroam - (Bakalárska práca)</a></li>
-                <li><a href="https://martinius96.github.io/martinius96/pdf/Chebovec_Martin_Diplomova_praca.pdf">Bezpečná aktualizácia firmvéru v senzorovej sieti na báze ESP32 - (Diplomová práca)</a></li>
-                <li><a href="https://martinius96.github.io/martinius96/pdf/Elektroinstalacia.pdf">Elektroinštalácia - ProgeCAD</a></li>
-                <li><a href="https://martinius96.github.io/martinius96/pdf/Suciastka_CAD.pdf">Nárys, bokorys, pôdorys súčiastky - ProgeCAD</a></li>
-                <li><a href="https://martinius96.github.io/martinius96/pdf/Sum_v_pix_grafike.pdf">Vplyv šumu na pixelovú grafiku - MATLAB</a></li>
-                <li><a href="martinius96/pdf/Smerovanie_v_ramci_SS_Chlebovec_Garbera.pdf">Smerovanie v rámci senzorových sietí - (Semestrálna práca)</a></li>
-                <li><a href="martinius96/pdf/mmWaves%2C%20typy%20ant%C3%A9n%2C%20typy%20komunik%C3%A1cie.pdf">mmWaves, typy antén, typy komunikácie - (Semestrálna práca)</a></li>
-                <li><a href="martinius96/pdf/L1-PON.pdf">Meranie na fyzikálnom modeli PON sietí pre areál TUKE - (LAB 1 Prenosové médiá)</a></li>
-                <li><a href="martinius96/pdf/L2_OV.pdf">Porovnanie charakteristík, výkonov vysielacích diód - (LAB 2 Prenosové médiá)</a></li>
-                <li><a href="martinius96/pdf/L3_OV.pdf">Statické charakteristiky útlmu v optickom vlákne - (LAB 3 Prenosové médiá)</a></li>
-                <!--- <li><a href="martinius96/pdf/Code_review_sledovanie_problemov_pre_K.pdf">Code review pre zadanie "K" - (Základy SW inžinierstva)</a></li> --->
-             <li><a href="martinius96/pdf/Chlebovec_Martin_B5_ZSI_Zadanie2.pdf">Analýza požiadaviek, konceptuálny návrh systému - (Základy SW inžinierstva)</a></li>
-                <!--- <li><a href="martinius96/pdf/Chlebovec_Martin_DU14_BIKS.pdf">Lineárna, kruhová konvolúcia - (Bezpečnosť inf. a kom. systémov)</a></li> --->
-                
-            </ul>
+
+        <!-- 3. TUKE -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm p-4">
+                <h3 class="h5 border-bottom pb-2 mb-3 text-primary">Zadania, práce - TUKE</h3>
+                <ul class="project-list">
+                    <li><a href="https://martinius96.github.io/martinius96/pdf/Chlebovec_Martin_Bakalarska_praca.pdf">Inteligentné relé - (Bakalárska práca)</a></li>
+                    <li><a href="https://martinius96.github.io/martinius96/pdf/Chebovec_Martin_Diplomova_praca.pdf">Bezpečná aktualizácia firmvéru - (Diplomová práca)</a></li>
+                    <li><a href="https://martinius96.github.io/martinius96/pdf/Elektroinstalacia.pdf">Elektroinštalácia - ProgeCAD</a></li>
+                    <li><a href="https://martinius96.github.io/martinius96/pdf/Suciastka_CAD.pdf">Nárys, bokorys súčiastky - ProgeCAD</a></li>
+                    <li><a href="https://martinius96.github.io/martinius96/pdf/Sum_v_pix_grafike.pdf">Vplyv šumu na grafiku - MATLAB</a></li>
+                    <li><a href="martinius96/pdf/Smerovanie_v_ramci_SS_Chlebovec_Garbera.pdf">Smerovanie v senzorových sieťach</a></li>
+                    <li><a href="martinius96/pdf/mmWaves%2C%20typy%20ant%C3%A9n%2C%20typy%20komunik%C3%A1cie.pdf">mmWaves a typy antén</a></li>
+                    <li><a href="martinius96/pdf/L1-PON.pdf">Meranie na PON sieti TUKE</a></li>
+                    <li><a href="martinius96/pdf/L2_OV.pdf">Charakteristiky vysielacích diód</a></li>
+                    <li><a href="martinius96/pdf/L3_OV.pdf">Útlm v optickom vlákne</a></li>
+                    <li><a href="martinius96/pdf/Chlebovec_Martin_B5_ZSI_Zadanie2.pdf">Konceptuálny návrh systému (ZSI)</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="column">
-            <center><h2>Iné projekty, návody</h2></center>
-            <ul>               
-            <li><a href="https://github.com/martinius96/NASA_APoD_Python"><b>Denné nastavenie pozadia pracovnej plochy - APoD NASA - Python</b></a></li>    
-          <li><a href="https://deadawp.blog.sector.sk/blogclanok/13568/zvukova-analyza-videa-ii-benzin-lpg.htm"><b>Zvuková analýza behu motora na 100, 95 oktánový benzín a LPG - MATLAB</b></a></li>
-                   
-            <li><a href="https://deadawp.blog.sector.sk/blogclanok/13521/system-ochrany-fotopasce-python.htm">Ochrana fotopasce, zber dát o počítači - Python</a></li>
-               
-          
-                <li><a href="https://forum.hwkitchen.cz/viewtopic.php?t=3689">Porovnanie rýchlosti (de)šifrovania s AES-CBC, CAMELLIA-CBC a ARIA-CBC - ESP32</a></li>
-                <li><a href="https://github.com/martinius96/MATLAB-scripty">MATLAB implementácie (práca s obrázkami, mobilné komunikácie, zvuková analýza...)</a></li>
-                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13483/nfc-karta-s-wifi-konfiguraciou.htm"><b>Gravírovaná NFC karta pre WiFi konfiguráciu (Wi-Fi Simple Config)</b></a></li>
-                <li><a href="https://deadawp.blog.sector.sk/blogclanok/13346/otvaranie-garazovej-brany-came-cez-smartfon.htm">Tuya - otváranie garážovej brány CAME paralélne do existujúceho riešenia</a></li>
-                 <li><a href="https://github.com/martinius96/hladinomer-studna-scripty/tree/master/examples/Tools_Integrations"><b>Watmonitor integrácie (Postman, Node-RED, ThingsBoard, ThingSpeak, Ubidots)</b></a></li>
-                <li><a href="https://www.facebook.com/ArduinoCZSK/posts/pfbid02Yby21o4mUy7mTQikdgpnm2r4qhHzRepoDz4rSVr9FuqxUfXKCVmdCsdsvhVEjYJsl">Tester 433 MHz ovládačov (CAME), riešenie nekompatibility knižníc VirtualWire, RadioHead</a></li>
-          <li><a href="https://deadawp.blog.sector.sk/blogclanok/13471/internetove-radia-esp32-max98357-i2s.htm"><b>Webrádio - (.mp3, .ogg Vorbis, .aac - LC, HE, HEv2)</b></a></li>
-                <!---   
-        <li><a href="https://deadawp.blog.sector.sk/blogclanok/13460/nfc-hudobny-system-pre-escape-room.htm"><b>NFC hudobný systém pre Escape room</b></a></li> 
-          --->
-                                <li><a href="https://github.com/martinius96/ESP32-eduroam">Pripojenie ESP32 do siete eduroam (802.1X WPA/WPA2-Enterprise)</a></li>
-           <li><a href="https://deadawp.blog.sector.sk/blogclanok/13225/hack-rs232-arduino-uart.htm">Emulátor RS232 pre kozmetický prístroj</a></li> 
-            </ul>
+
+        <!-- 4. Iné -->
+        <div class="col-12 mt-2">
+            <div class="card shadow-sm p-4">
+                <h3 class="h5 border-bottom pb-2 mb-3 text-primary">Iné projekty a návody</h3>
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <ul class="project-list">
+                            <li><a href="https://github.com/martinius96/NASA_APoD_Python"><b>NASA APoD - Python</b></a></li>
+                            <li><a href="https://deadawp.blog.sector.sk/blogclanok/13568/zvukova-analyza-videa-ii-benzin-lpg.htm"><b>Zvuková analýza motora benzín / LPG - MATLAB</b></a></li>
+                            <li><a href="https://deadawp.blog.sector.sk/blogclanok/13521/system-ochrany-fotopasce-python.htm">Ochrana fotopasce - Python</a></li>
+                            <li><a href="https://forum.hwkitchen.cz/viewtopic.php?t=3689">(Dešifrovanie) s AES/CAMELLIA/ARIA - ESP32</a></li>
+                            <li><a href="https://github.com/martinius96/MATLAB-scripty">MATLAB implementácie</a></li>
+                            <li><a href="https://deadawp.blog.sector.sk/blogclanok/13483/nfc-karta-s-wifi-konfiguraciou.htm"><b>Gravírovaná NFC karta (WiFi Simple Config)</b></a></li>
+                            <li><a href="https://deadawp.blog.sector.sk/blogclanok/13346/otvaranie-garazovej-brany-came.htm">Tuya - ovládanie brány CAME</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="project-list">
+                            <li><a href="https://github.com/martinius96/hladinomer-studna-scripty/tree/master/examples/Tools_Integrations"><b>Watmonitor integrácie (Postman, Node-RED, ThingsBoard)</b></a></li>
+                            <li><a href="https://www.facebook.com/ArduinoCZSK/posts/pfbid02Yby21o4mUy7mTQikdgpnm2r4qhHzRepoDz4rSVr9FuqxUfXKCVmdCsdsvhVEjYJsl">Tester 433 MHz ovládačov</a></li>
+                            <li><a href="https://deadawp.blog.sector.sk/blogclanok/13471/internetove-radia-esp32-max98357-i2s.htm"><b>Webrádio - ESP32 I2S</b></a></li>
+                            <li><a href="https://github.com/martinius96/ESP32-eduroam">Pripojenie ESP32 do eduroam</a></li>
+                            <li><a href="https://deadawp.blog.sector.sk/blogclanok/13225/hack-rs232-arduino-uart.htm">Emulátor RS232</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
